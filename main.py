@@ -9,7 +9,7 @@ from starlette.middleware.sessions import SessionMiddleware
 
 import prometheus
 from nicegui import app, ui
-from website import anti_scroll_hack, documentation, fly, main_page, svg
+from website import anti_scroll_hack, documentation, fly, svg, main_page, demo_page
 
 prometheus.start_monitor(app)
 
@@ -36,6 +36,10 @@ async def _post_dark_mode(request: Request) -> None:
 @ui.page('/')
 def _main_page() -> None:
     main_page.create()
+
+@ui.page('/demo')
+def _demo_page() -> None:
+    demo_page.create()
 
 
 @ui.page('/documentation')

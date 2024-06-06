@@ -21,7 +21,7 @@ def add_header(menu: Optional[ui.left_drawer] = None) -> None:
     menu_items = {
         'Installation': '/#installation',
         'Features': '/#features',
-        'Demos': '/#demos',
+        'Demo': '/demo',
         'Documentation': '/documentation',
         'Examples': '/#examples',
         'Why?': '/#why',
