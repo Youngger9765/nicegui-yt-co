@@ -19,12 +19,12 @@ def add_head_html() -> None:
 def add_header(menu: Optional[ui.left_drawer] = None) -> None:
     """Create the page header."""
     menu_items = {
-        'Installation': '/#installation',
-        'Features': '/#features',
+        'Product': '/#Product',
+        'Discover': '/#Discover',
         'Demo': '/demo',
-        'Documentation': '/documentation',
-        'Examples': '/#examples',
-        'Why?': '/#why',
+        'Blog': '/Blog',
+        'Templates': '/#Templates',
+        'Price': '/#price',
     }
     dark_mode = ui.dark_mode(value=app.storage.browser.get('dark_mode'), on_change=lambda e: ui.run_javascript(f'''
         fetch('/dark_mode', {{
@@ -49,25 +49,25 @@ def add_header(menu: Optional[ui.left_drawer] = None) -> None:
         search = Search()
         search.create_button()
 
-        with ui.element().classes('max-[420px]:hidden').tooltip('Cycle theme mode through dark, light, and system/auto.'):
-            ui.button(icon='dark_mode', on_click=lambda: dark_mode.set_value(None)) \
-                .props('flat fab-mini color=white').bind_visibility_from(dark_mode, 'value', value=True)
-            ui.button(icon='light_mode', on_click=lambda: dark_mode.set_value(True)) \
-                .props('flat fab-mini color=white').bind_visibility_from(dark_mode, 'value', value=False)
-            ui.button(icon='brightness_auto', on_click=lambda: dark_mode.set_value(False)) \
-                .props('flat fab-mini color=white').bind_visibility_from(dark_mode, 'value', lambda mode: mode is None)
+        # with ui.element().classes('max-[420px]:hidden').tooltip('Cycle theme mode through dark, light, and system/auto.'):
+        #     ui.button(icon='dark_mode', on_click=lambda: dark_mode.set_value(None)) \
+        #         .props('flat fab-mini color=white').bind_visibility_from(dark_mode, 'value', value=True)
+        #     ui.button(icon='light_mode', on_click=lambda: dark_mode.set_value(True)) \
+        #         .props('flat fab-mini color=white').bind_visibility_from(dark_mode, 'value', value=False)
+        #     ui.button(icon='brightness_auto', on_click=lambda: dark_mode.set_value(False)) \
+        #         .props('flat fab-mini color=white').bind_visibility_from(dark_mode, 'value', lambda mode: mode is None)
 
-        with ui.link(target='https://discord.gg/TEpFeAaF4f').classes('max-[515px]:hidden').tooltip('Discord'):
-            svg.discord().classes('fill-white scale-125 m-1')
-        with ui.link(target='https://www.reddit.com/r/nicegui/').classes('max-[465px]:hidden').tooltip('Reddit'):
-            svg.reddit().classes('fill-white scale-125 m-1')
-        with ui.link(target='https://github.com/zauberzeug/nicegui/').classes('max-[365px]:hidden').tooltip('GitHub'):
+        # with ui.link(target='https://discord.gg/TEpFeAaF4f').classes('max-[515px]:hidden').tooltip('Discord'):
+        #     svg.discord().classes('fill-white scale-125 m-1')
+        # with ui.link(target='https://www.reddit.com/r/nicegui/').classes('max-[465px]:hidden').tooltip('Reddit'):
+        #     svg.reddit().classes('fill-white scale-125 m-1')
+        with ui.link(target='/demo').classes('max-[365px]:hidden').tooltip('GitHub'):
             svg.github().classes('fill-white scale-125 m-1')
 
-        add_star().classes('max-[550px]:hidden')
+        # add_star().classes('max-[550px]:hidden')
 
-        with ui.row().classes('min-[1051px]:hidden'):
-            with ui.button(icon='more_vert').props('flat color=white round'):
-                with ui.menu().classes('bg-primary text-white text-lg'):
-                    for title_, target in menu_items.items():
-                        ui.menu_item(title_, on_click=lambda target=target: ui.navigate.to(target))
+        # with ui.row().classes('min-[1051px]:hidden'):
+        #     with ui.button(icon='more_vert').props('flat color=white round'):
+        #         with ui.menu().classes('bg-primary text-white text-lg'):
+        #             for title_, target in menu_items.items():
+        #                 ui.menu_item(title_, on_click=lambda target=target: ui.navigate.to(target))
