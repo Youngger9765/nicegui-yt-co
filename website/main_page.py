@@ -15,10 +15,10 @@ def create_hero_section():
             ui.label('Power of knowhow.ai Today!').classes('text-4xl font-bold text-green-600')
             ui.label('Transform YouTube videos into interactive slides containing charts, tables, key points, and highlights. Knowhow.ai not only supports Summary for YouTube/Video but also offers AI-powered Content and personal blog.').classes('text-lg text-white max-w-lg')
             with ui.row().classes('gap-4 justify-center'):
-                ui.button('Get Started').classes('bg-white text-black')
-                ui.button('Learn More').classes('bg-gray-700 text-white')
-            # ui.input('name@email.com').placeholder('Enter your email').classes('mt-4')
-            ui.button('Try to Convert Now').classes('bg-green-600 text-white')
+                # ui.button('Get Started').classes('bg-white text-black')
+                # ui.button('Learn More').classes('bg-gray-700 text-white')
+                # ui.input('name@email.com').placeholder('Enter your email').classes('mt-4')
+                ui.link('Try to Convert Now', '/demo').classes('bg-green-600 text-white px-4 py-2 rounded')
 
 def create_features_section():
     with ui.row().classes('w-full min-h-screen bg-gray-50 py-20 items-center justify-center'):
