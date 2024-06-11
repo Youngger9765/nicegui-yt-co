@@ -2,13 +2,18 @@ from nicegui import ui
 from gradio_client import Client
 import json
 
-def fetch_and_show_result():
+def show_loading_spinner():
     ui.run_javascript('document.getElementById("loading_spinner").classList.remove("hidden");')  # Show the loading spinner
+
+def hide_loading_spinner():
+    ui.run_javascript('document.getElementById("loading_spinner").classList.add("hidden");')  # Hide the loading spinner
+
+def fetch_and_show_result():
     result_label.text = ''
     youtube_link = youtube_input.value
     if not youtube_link:
         result_label.text = 'Please enter a valid YouTube link.'
-        ui.run_javascript('document.getElementById("loading_spinner").classList.add("hidden");')  # Hide the loading spinner
+        hide_loading_spinner()
         return
 
     video_id = youtube_link.split('v=')[-1]
@@ -50,7 +55,7 @@ def fetch_and_show_result():
         print(f"Prediction error: {e}")
         ui.run_javascript(f"showUnicodeResult('Error: {e}')")
     finally:
-        ui.run_javascript('document.getElementById("loading_spinner").classList.add("hidden");')  # Hide the loading spinner after processing
+        hide_loading_spinner()
 
 def create() -> None:
     global result_label, youtube_input
@@ -58,7 +63,7 @@ def create() -> None:
         ui.button('Back to Home', on_click=lambda: ui.open('/'))
     with ui.row():
         youtube_input = ui.input('Enter YouTube Link').props('autogrow').style('width: 500px;')
-        ui.button('Try Demo', on_click=fetch_and_show_result)
+        ui.button('Try Demo', on_click=lambda: (show_loading_spinner(), ui.timer(0.1, fetch_and_show_result, once=True)))
     with ui.column():
         result_label = ui.label('')
         ui.html('''
@@ -178,4 +183,3 @@ def create() -> None:
             }
         </script>
     ''')
-
