@@ -60,8 +60,6 @@ def fetch_and_show_result():
 def create() -> None:
     global result_label, youtube_input
     with ui.row():
-        ui.button('Back to Home', on_click=lambda: ui.open('/'))
-    with ui.row():
         youtube_input = ui.input('Enter YouTube Link').props('autogrow').style('width: 500px;')
         ui.button('Try Demo', on_click=lambda: (show_loading_spinner(), ui.timer(0.1, fetch_and_show_result, once=True)))
     with ui.column():
