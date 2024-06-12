@@ -61,7 +61,7 @@ def create() -> None:
     global result_label, youtube_input
     with ui.row():
         youtube_input = ui.input('Enter YouTube Link').props('autogrow').style('width: 500px;')
-        ui.button('Try Demo', on_click=lambda: (show_loading_spinner(), ui.timer(0.1, fetch_and_show_result, once=True)))
+        ui.button('Try Demo', on_click=lambda: (show_loading_spinner(), ui.timer(1, fetch_and_show_result, once=True)))
     with ui.column():
         result_label = ui.label('')
         ui.html('''
