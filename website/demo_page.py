@@ -20,7 +20,7 @@ def fetch_and_show_result():
     print(f"youtube_link: {youtube_link}")
     print(f"video_id: {video_id}")
 
-    client = Client("https://aicloudtw-video-bot-999.hf.space/--replicas/j0jxv/")
+    client = Client("AiCloudTW/video_bot_999")
     
     try:
         result = client.predict(
