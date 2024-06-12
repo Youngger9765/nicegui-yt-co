@@ -160,6 +160,9 @@ def create() -> None:
                                 ${imagesHtml}
                             </div>
                             <div style="margin-top:10px;">
+                                <p>${moment.start} - ${moment.end}</p>
+                            </div>
+                            <div style="margin-top:10px;">
                                 <p>${moment.text}</p>
                             </div>
                             <div style="margin-top:10px;">
